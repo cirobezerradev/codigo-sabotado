@@ -1,0 +1,33 @@
+<!doctype html>
+<html lang="pt-br">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Almoxarifado da Manutenção</title>
+  <style>
+    body { font-family: Arial, sans-serif; margin: 0; background: #F7F8FA; color: #1F2937; }
+    header { background: #1E3A5F; color: #fff; padding: 14px 24px; }
+    header a { color: #FFD43B; margin-right: 16px; text-decoration: none; }
+    main { padding: 24px; max-width: 1000px; margin: auto; }
+    table { border-collapse: collapse; width: 100%; background: #fff; }
+    th { background: #1E3A5F; color: #fff; text-align: left; padding: 8px; }
+    td { border-bottom: 1px solid #D5DEE8; padding: 8px; }
+    .aviso { background: #E6F4EC; border-left: 5px solid #2E7D4F; padding: 10px; margin-bottom: 16px; }
+    input, button { padding: 6px; }
+  </style>
+</head>
+<body>
+<header>
+  <strong>Almoxarifado da Manutenção</strong> &nbsp;
+  <a href="{{ url_for('listar_pecas') }}">Peças</a>
+  <a href="{{ url_for('nova_peca') }}">Nova peça</a>
+  <a href="{{ url_for('estoque_baixo') }}">Estoque baixo</a>
+  <a href="{{ url_for('relatorio') }}">Relatório</a>
+  <a href="{{ url_for('ordens') }}">Ordens de serviço</a>
+</header>
+<main>
+  {% for m in get_flashed_messages() %}<div class="aviso">{{ m }}</div>{% endfor %}
+  {% block conteudo %}{% endblock %}
+</main>
+</body>
+</html>

@@ -1,0 +1,9 @@
+{% extends "base.html" %}
+{% block conteudo %}
+<h2>Peças com estoque baixo</h2>
+<p>Peças no estoque mínimo ou abaixo dele: precisam de reposição.</p>
+<table>
+  <tr><th>Código</th><th>Nome</th><th>Qtd.</th><th>Mín.</th></tr>
+  {% for p in pecas %}<tr><td>{{ p.codigo }}</td><td>{{ p.nome }}</td><td>{{ p.quantidade }}</td><td>{{ p.minimo }}</td></tr>{% endfor %}
+</table>
+{% endblock %}

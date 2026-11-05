@@ -1,0 +1,23 @@
+{% extends "base.html" %}
+{% block conteudo %}
+<h2>Ordens de serviço</h2>
+<form method="post">
+  <input type="hidden" name="csrf_token" value="{{ csrf_token() }}">
+  <input name="equipamento" placeholder="Equipamento" required>
+  <input name="descricao" placeholder="Descrição do problema" required size="50">
+  <button>Abrir ordem</button>
+</form>
+<br>
+<table>
+  <tr><th>Data</th><th>Equipamento</th><th>Descrição</th><th>Status</th><th></th></tr>
+  {% for o in ordens %}
+  <tr><td>{{ o.data }}</td><td>{{ o.equipamento }}</td><td>{{ o.descricao }}</td><td>{{ o.status }}</td>
+      <td>
+        <form method="post" action="{{ url_for('resumir_ordem', ordem_id=o.id) }}" onsubmit="return confirm('Enviar a descrição desta ordem para a IA?')">
+          <input type="hidden" name="csrf_token" value="{{ csrf_token() }}">
+          <button type="submit">Resumir com IA</button>
+        </form>
+      </td></tr>
+  {% endfor %}
+</table>
+{% endblock %}

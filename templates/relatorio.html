@@ -1,0 +1,6 @@
+{% extends "base.html" %}
+{% block conteudo %}
+<h2>Relatório do estoque</h2>
+<p>Itens cadastrados: <strong>{{ total_itens }}</strong></p>
+<p>Valor total em estoque: <strong id="valor">R$ {{ "%.2f"|format(valor_total) }}</strong></p>
+{% endblock %}
